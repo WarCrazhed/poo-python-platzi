@@ -1,0 +1,7 @@
+[project]
+name = "poo-python-platzi"
+version = "0.1.0"
+description = "project biblioteca"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
