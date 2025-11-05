@@ -35,6 +35,14 @@ class Teacher(User):
         self.borrowed_books.append(book)
         return f"Profesor {self.name} ha solicitado el libro '{book}'."
 
+    def return_book(self, book):
+        if book in self.borrowed_books:
+            self.borrowed_books.remove(book)
+            return f"Profesor {self.name} ha devuelto el libro '{book}'."
+        else:
+            return f"El libro '{book}' no está en la lista de libros prestados de {self.name}."
+
+
 student = Student('Luis', '12345678', 'Ingeniería')
 teacher = Teacher('Felipe', '87654321')
 
