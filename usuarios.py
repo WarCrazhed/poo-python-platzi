@@ -1,3 +1,11 @@
+from typing import Protocol
+from main import Libro
+
+class RequestProtocol(Protocol):
+    def request_book(self, book: str) -> str:
+        """Method that any applicant must implement"""
+        ... 
+
 class User:
     def __init__(self, name, cedula):
         self.name = name
@@ -44,13 +52,12 @@ class Teacher(User):
 
 
 student = Student('Luis', '12345678', 'Ingeniería')
+student2 = Student('José', '11223344', 'Medicina')
 teacher = Teacher('Felipe', '87654321')
 
-print(student.request_book('Cálculo I'))
-print(student.request_book('Python para Todos'))
-print(student.request_book('Python Intermedio'))
-print(student.request_book('Python Avanzado'))
-print(student.return_book('Cálculo I'))
-print(student.return_book('Python para Todos'))
-print(student.return_book('Python Intermedio'))
-print(student.return_book('Python Avanzado'))
+libro = Libro("Cien Años de Soledad", "Gabriel García Márquez", "9781644734728", True)
+
+usuarios: list[RequestProtocol] = [student, student2, teacher, libro]
+
+for usuario in usuarios:
+    print(usuario.request_book('Cien Años de Soledad'))
