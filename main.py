@@ -1,105 +1,28 @@
-from typing import Protocol
-
-class LibroProtocol(Protocol):
-
-    def lend_book(self) -> str: ...
-
-    def return_book(self) -> str: ...
-        
-    def calculate_duration(self) -> str: ...
-
-class Libro: 
-    def __init__(self, title, autor, isbn, available, __lended_count=0):
-        self.title = title
-        self.autor = autor
-        self.isbn = isbn
-        self.available = available
-        self.__lended_count = 0
-
-    def __str__(self):
-        return f"Título: {self.title}, Autor: {self.autor}, ISBN: {self.isbn}, Disponible: {self.available}, Popular: {self.is_popular()}"
-
-    def is_popular(self):
-        if self.__lended_count >= 5:
-            return f"El libro es popular."
-        else:
-            return f"El libro no es popular."
-
-    def get_lended_count(self):
-        return self.__lended_count
-
-    def set_lended_count(self, value):
-        self.__lended_count = value
-
-class PhysicalBook(Libro):
-    def lend_book(self):
-        return "7 días"
-
-class DigitalBook(Libro):
-    def lend_book(self):
-        return "14 días"
-
-class Library:
-    def __init__(self, name):
-        self.name = name
-        self.books = []
-        self.users = []
-
-    def books_available(self):
-        return [
-            book.title for book in self.books if book.available
-        ]
-
-mi_libro = PhysicalBook(
-    "El Principito", 
-    "Antoine de Saint-Exupéry", 
-    "9781644734728", 
-    True
-)
-
-mi_libro_no_disponible = PhysicalBook(
-    "Cien Años de Soledad",
-    "Gabriel García Márquez",
-    "9781644734728",
-    False,
-)
-
-otro_libro = PhysicalBook(
-    "Don Quijote de la Mancha",
-    "Miguel de Cervantes",
-    "9781644734728",
-    True,
-)
+from users import Student, Teacher
+from books import PhysicalBook
+from library import Library
+from exceptions import UserNotFoundError
 
 biblioteca = Library("Platzi Biblioteca")
-biblioteca.books = [
-    mi_libro, 
-    mi_libro_no_disponible, 
-    otro_libro
-]
+student = Student('Luis', '12345678', 'Ingeniería')
+student2 = Student('José', '11223344', 'Medicina')
+teacher = Teacher('Felipe', '87654321')
+mi_libro = PhysicalBook("El Principito", "Antoine de Saint-Exupéry", "9781644734728", )
+otro_libro = PhysicalBook("Don Quijote de la Mancha","Miguel de Cervantes","9781644734728",)
 
-print(biblioteca.books_available())
+biblioteca.users = [student, student2, teacher]
+biblioteca.books = [mi_libro, otro_libro]
 
-""" libros = [
-    Libro("100 Años de Soledad", "Gabriel García Márquez", "9781644734728", True),
-    Libro("El Principito", "Antoine de Saint-Exupéry", "9781644734728", True),
-    Libro("Don Quijote de la Mancha", "Miguel de Cervantes", "9781644734728", True),
-]
+print("Bienvenido a Platzi Biblioteca")
 
-libros[0].set_lended_count(10)
+print("Libros disponibles:")
+for book in biblioteca.books_available():
+    print(f"  - {book}") 
+print()
 
-print(libros[0].lend_book())
-print(libros[0].return_book())
-print(libros[0].lend_book())
-print(libros[0].return_book())
-print(libros[0].lend_book())
-print(libros[0].return_book())
-print(libros[0].lend_book())
-print(libros[0].return_book())
-print(libros[0].lend_book())
-print(libros[0].return_book())
-
-print(libros[0].get_lended_count())
-
-for libro in libros:
-    print(libro) """
+cedula = input("Ingrese su cédula: ")
+try:
+    user = biblioteca.search_user(cedula)
+    print(f"Bienvenido {user.name}")
+except UserNotFoundError as e:
+    print(e)

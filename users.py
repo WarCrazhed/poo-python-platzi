@@ -1,5 +1,5 @@
 from typing import Protocol
-from main import Libro
+from exceptions import InvalidTittleError
 
 class RequestProtocol(Protocol):
     def request_book(self, book: str) -> str:
@@ -22,11 +22,15 @@ class Student(User):
         self.books_limit = 3
 
     def request_book(self, book):
+        if not book:
+            raise InvalidTittleError(f"El libro con el titulo {book} no es válido")
+
         if len(self.borrowed_books) < self.books_limit:
             self.borrowed_books.append(book)
             return f"Estudiante {self.name} ha solicitado el libro '{book}'."
         else:
             return f"Estudiante {self.name} ha alcanzado el límite de libros prestados. Libros prestados: {len(self.borrowed_books)}."
+
     def return_book(self, book):
         if book in self.borrowed_books:
             self.borrowed_books.remove(book)
@@ -49,15 +53,3 @@ class Teacher(User):
             return f"Profesor {self.name} ha devuelto el libro '{book}'."
         else:
             return f"El libro '{book}' no está en la lista de libros prestados de {self.name}."
-
-
-student = Student('Luis', '12345678', 'Ingeniería')
-student2 = Student('José', '11223344', 'Medicina')
-teacher = Teacher('Felipe', '87654321')
-
-libro = Libro("Cien Años de Soledad", "Gabriel García Márquez", "9781644734728", True)
-
-usuarios: list[RequestProtocol] = [student, student2, teacher, libro]
-
-for usuario in usuarios:
-    print(usuario.request_book('Cien Años de Soledad'))
