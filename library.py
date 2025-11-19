@@ -1,4 +1,4 @@
-from exceptions import UserNotFoundError
+from exceptions import UserNotFoundError, BookNotAvailableError
 
 class Library:
     def __init__(self, name):
@@ -8,7 +8,7 @@ class Library:
 
     def books_available(self):
         return [
-            book.title for book in self.books if book.available
+            book for book in self.books if book.available
         ]
 
     def search_user(self, cedula):
@@ -16,3 +16,9 @@ class Library:
             if user.cedula == cedula:
                 return user
         raise UserNotFoundError(f"El usuario con la cédula {cedula} no se encuentra registrado")
+    
+    def search_book(self, title):
+        for book in self.books:
+            if book.title == title and book.available:
+                return book
+        raise BookNotAvailableError(f"El libro con el titulo: {title} no se encuentra disponible o no esta registrado")

@@ -1,12 +1,23 @@
 from typing import Protocol
 from exceptions import InvalidTittleError
+from abc import ABC, abstractmethod
 
 class RequestProtocol(Protocol):
     def request_book(self, book: str) -> str:
         """Method that any applicant must implement"""
         ... 
 
-class User:
+class UserBase(ABC):
+    @abstractmethod
+    def request_book(self):
+        pass
+
+    # Los abstracmethods garantizan que funcione un metodo dentro de una clase
+    @abstractmethod
+    def return_book(self):
+        pass
+
+class User(UserBase):
     def __init__(self, name, cedula):
         self.name = name
         self.cedula = cedula
