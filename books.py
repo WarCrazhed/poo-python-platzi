@@ -17,8 +17,12 @@ class Book:
         self.available = available
         self.__lended_count = 0
 
+    @classmethod
+    def create_not_available(cls, title, autor, isbn):
+        return cls(title=title, autor=autor, isbn=isbn, available=False)
+
     def __str__(self):
-        return f"Título: {self.title}, Autor: {self.autor}, ISBN: {self.isbn}, Disponible: {self.available}, Popular: {self.is_popular()}"
+        return f"Título: {self.title}, Autor: {self.autor}, ISBN: {self.isbn}, Disponible: {self.available}, Popular: {self.is_popular}"
 
     def lend_book(self):
         if not self.available:

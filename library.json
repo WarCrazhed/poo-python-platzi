@@ -1,0 +1,154 @@
+{
+    "name": "Platzi Biblioteca V2",
+    "users": [
+        {
+            "name": "Felipe",
+            "cedula": "87654321",
+            "borrowed_books": [],
+            "books_limit": null
+        },
+        {
+            "name": "Juan Pablo Ramos",
+            "cedula": "12345678",
+            "borrowed_books": [],
+            "degree": "Ingeniería",
+            "books_limit": 3
+        },
+        {
+            "name": "María José Rodríguez",
+            "cedula": "87654321",
+            "borrowed_books": [],
+            "degree": "Medicina",
+            "books_limit": 3
+        },
+        {
+            "name": "Pedro López",
+            "cedula": "11223344",
+            "borrowed_books": [],
+            "degree": "Derecho",
+            "books_limit": 3
+        },
+        {
+            "name": "Ana García",
+            "cedula": "55667788",
+            "borrowed_books": [],
+            "degree": "Arquitectura",
+            "books_limit": 3
+        },
+        {
+            "name": "Carlos Martínez",
+            "cedula": "99887766",
+            "borrowed_books": [],
+            "degree": "Diseño",
+            "books_limit": 3
+        },
+        {
+            "name": "Laura Sánchez",
+            "cedula": "44556677",
+            "borrowed_books": [],
+            "degree": "Psicología",
+            "books_limit": 3
+        },
+        {
+            "name": "Diego Ramírez",
+            "cedula": "22334455",
+            "borrowed_books": [],
+            "degree": "Biología",
+            "books_limit": 3
+        },
+        {
+            "name": "Sofía Torres",
+            "cedula": "77889900",
+            "borrowed_books": [],
+            "degree": "Historia",
+            "books_limit": 3
+        },
+        {
+            "name": "Luis Alberto Rojas",
+            "cedula": "12345678",
+            "borrowed_books": [],
+            "degree": "Ingeniería",
+            "books_limit": 3
+        },
+        {
+            "name": "José Armando Rodríguez",
+            "cedula": "11223344",
+            "borrowed_books": [],
+            "degree": "Medicina",
+            "books_limit": 3
+        }
+    ],
+    "books": [
+        {
+            "title": "El Principito",
+            "autor": "Antoine de Saint-Exupéry",
+            "isbn": "9781644734728",
+            "available": true,
+            "_Book__lended_count": 0
+        },
+        {
+            "title": "Don Quijote de la Mancha",
+            "autor": "Miguel de Cervantes",
+            "isbn": "9781644734728",
+            "available": true,
+            "_Book__lended_count": 0
+        },
+        {
+            "title": "Cien años de soledad",
+            "autor": "Gabriel García Márquez",
+            "isbn": "9781644734728",
+            "available": true,
+            "_Book__lended_count": 0
+        },
+        {
+            "title": "1984",
+            "autor": "George Orwell",
+            "isbn": "9781644734728",
+            "available": true,
+            "_Book__lended_count": 0
+        },
+        {
+            "title": "Orgullo y prejuicio",
+            "autor": "Jane Austen",
+            "isbn": "9781644734728",
+            "available": true,
+            "_Book__lended_count": 0
+        },
+        {
+            "title": "Harry Potter y la piedra filosofal",
+            "autor": "J.K. Rowling",
+            "isbn": "9781644734728",
+            "available": true,
+            "_Book__lended_count": 0
+        },
+        {
+            "title": "Matar a un ruiseñor",
+            "autor": "Harper Lee",
+            "isbn": "9781644734728",
+            "available": true,
+            "_Book__lended_count": 0
+        },
+        {
+            "title": "Los juegos del hambre",
+            "autor": "Suzanne Collins",
+            "isbn": "9781644734728",
+            "available": true,
+            "_Book__lended_count": 0
+        },
+        {
+            "title": "El señor de los anillos",
+            "autor": "J.R.R. Tolkien",
+            "isbn": "9781644734728",
+            "available": true,
+            "_Book__lended_count": 0
+        },
+        {
+            "title": "El alquimista",
+            "autor": "Paulo Coelho",
+            "isbn": "9781644734728",
+            "available": true,
+            "_Book__lended_count": 0
+        }
+    ],
+    "save_date": "2025-11-20T09:16:17.826559"
+}
