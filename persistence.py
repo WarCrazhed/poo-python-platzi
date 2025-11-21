@@ -1,6 +1,10 @@
 import json
 from datetime import datetime
 
+from library import Library
+from books import PhysicalBook
+from users import Student, Teacher
+
 class Persistence:
     def __init__(self, file="library.json") -> None:
         self.file = file
@@ -19,4 +23,30 @@ class Persistence:
     def load_data(self):
         with open(self.file, "r", encoding="utf-8") as f:
             data = json.load(f)
-        print(f"datos {data}")
+
+        library = Library(data["name"])
+        for data_book in data["books"]:
+            book = PhysicalBook(
+                data_book["title"],
+                data_book["autor"],
+                data_book["isbn"],
+                data_book["available"],
+            )
+            library.books.append(book)
+
+        for user_data in data["users"]:
+            if 'degree' in user_data:
+                user = Student(
+                    user_data["name"],
+                    user_data["cedula"],
+                    user_data["degree"]
+                )
+            else:
+                user = Teacher(
+                    user_data["name"],
+                    user_data["cedula"]
+                )
+            library.users.append(user)
+
+        return library
+

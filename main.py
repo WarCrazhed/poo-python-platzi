@@ -1,28 +1,8 @@
-from users import Teacher
-from library import Library
 from exceptions import UserNotFoundError, BookNotAvailableError
-from data import data_libros, data_estudiantes
-from books import Book
 from persistence import Persistence
 
-biblioteca = Library("Platzi Biblioteca V2")
-teacher = Teacher('Felipe', '87654321')
-
-biblioteca.users = [teacher] + data_estudiantes
-biblioteca.books = data_libros
-
 persistencia = Persistence()
-persistencia.save_data(biblioteca)
-persistencia.load_data()
-
-# Ejemplo de Libro setter
-# libro_de_prueba = data_libros[0]
-# libro_de_prueba.lended_count = -1
-
-""" result = Library.validate_isbn("123456789")
-print(f"el isbn es valido: {result}") """
-libro_no_disponible = Book.create_not_available("Libro de prueba", "Autor de Prueba", "34567890")
-print("Libro no disponible?: ", libro_no_disponible.available)
+biblioteca = persistencia.load_data()
 
 print("Bienvenido a Platzi Biblioteca")
 
@@ -53,3 +33,5 @@ try:
     print(f"\n{resultado_prestar}")
 except BookNotAvailableError as e:
     print(e)
+
+persistencia.save_data(biblioteca)
